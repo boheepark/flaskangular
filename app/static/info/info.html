@@ -1,0 +1,30 @@
+<div class="info">
+  <nav class="navbar navbar-toggleable-lg navbar-dark bg-faded">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">{{ user.uname }}</a>
+      </div>
+      <div class="btn signout-btn" ng-click="signout()"><span>Signout</span></div>
+    </div>
+  </nav>
+  <div class="user-info">
+    <h2>User Id: {{ user.id }}</h2>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>Checking Balance:</td>
+          <td>{{ user.checking | currency }}</td>
+        </tr>
+        <tr>
+          <td>Trading Balance:</td>
+          <td>{{ user.trading | currency}}</td>
+        </tr>
+        <tr>
+          <td>Sum:</td>
+          <td>{{ user.sum | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <trades></trades>
+</div>

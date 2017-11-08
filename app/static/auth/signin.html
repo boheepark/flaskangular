@@ -1,0 +1,51 @@
+<div class='form-auth'>
+  <asdf-logo class="logo"></asdf-logo>
+  <div class="container signin-container">
+    <!-- <form name="form" class="auth-form container" ng-submit="signin()"> -->
+    <form name="authForm" class="auth-form">
+      <div class="auth-form__cover"></div>
+      <div class="auth-form__loader">
+        <div class="spinner active">
+          <svg class="spinner__circular" viewBox="25 25 50 50">
+            <circle class="spinner__path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="container container-fluid auth-form__content">
+        <div class="auth-form__heading">
+          <h1 class="auth-form__title">Authorization</h1>
+          <a href="#!/signup"><span>Don't have an account? <strong>Signup</strong>...</span></a>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="uname" class="auth-input__label">
+                <span class="auth-input__label-text">Username</span>
+              </label>
+              <input class="auth-input__input" type="text" name="uname" ng-model="user.uname" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.uname.$error" ng-show="authForm.uname.$touched">
+              <span ng-message="required">Please enter a username.</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="pw" class="auth-input__label">
+                <span class="auth-input__label-text">Password</span>
+              </label>
+              <input class="auth-input__input" type="password" name="pw" ng-model="user.pw" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.pw.$error" ng-show="authForm.pw.$touched">
+              <span ng-message="required">Please enter your password.</span>
+            </div>
+          </div>
+        </div>
+        <auth-btn text="Signin"></auth-btn>
+      </div>
+    </form>
+  </div>
+</div>

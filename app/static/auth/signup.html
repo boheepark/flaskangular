@@ -1,0 +1,218 @@
+<div class="form-auth">
+  <asdf-logo class="logo"></asdf-logo>
+  <div class="signup-container">
+    <!-- <form name="form" class="auth-form container" ng-submit="signup(user)"> -->
+    <form name="authForm" class="auth-form">
+      <div class="auth-form__cover"></div>
+      <div class="auth-form__loader">
+        <div class="spinner active">
+          <svg class="spinner__circular" viewBox="25 25 50 50">
+            <circle class="spinner__path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="container container-fluid auth-form__content">
+        <div class="auth-form__heading">
+          <h1 class="auth-form__title">Authorization</h1>
+          <a href="#!/signin"><span>Already have an account? <strong>Signin</strong></span></a>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="uname" class="auth-input__label">
+                <span class="auth-input__label-text">Username</span>
+              </label>
+              <input class="auth-input__input" type="text" name="uname" ng-model="user.uname" check-db="uname" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.uname.$error" ng-show="authForm.uname.$touched">
+              <span ng-message="required">Username is required.</span>
+              <span ng-message="recordLoading">Checking database...</span>
+              <span ng-message="recordAvailable">The username is already in use.</span>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="name" class="auth-input__label">
+                <span class="auth-input__label-text">Full Name</span>
+              </label>
+              <input class="auth-input__input" type="text" name="name" ng-model="user.name" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.name.$error" ng-show="authForm.name.$touched">
+              <span ng-message="required">Full name is required.</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="email" class="auth-input__label">
+                <span class="auth-input__label-text">Email</span>
+              </label>
+              <input class="auth-input__input" type="email" name="email" ng-model="user.email" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.email.$error" ng-show="authForm.email.$touched">
+              <span ng-message="required">Enter Email.</span>
+              <span ng-message="email">Please enter a valid email address.</span>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="cemail" class="auth-input__label">
+                <span class="auth-input__label-text">Confirm Email</span>
+              </label>
+              <input class="auth-input__input" type="email" name="cemail" ng-model="user.cemail" compare-to="user.email" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.cemail.$error" ng-show="authForm.cemail.$touched">
+              <span ng-message="required">Please confirm email address.</span>
+              <span ng-message="email">Please enter a valid email address.</span>
+              <span ng-message="compareTo">Email does not match.</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="pw" class="auth-input__label">
+                <span class="auth-input__label-text">Password</span>
+              </label>
+              <input class="auth-input__input" type="password" name="pw" ng-model="user.pw" ng-minlength="8" check-pw required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.pw.$error" ng-show="authForm.pw.$touched">
+              <span ng-message="required">You did not enter a password.</span>
+              <span ng-message="minlength">Password must be at least 8 characters long.</span>
+              <span ng-message="checkPw">Required: uppercase lowercase number symbol.</span>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="cpw" class="auth-input__label">
+                <span class="auth-input__label-text">Confirm Password</span>
+              </label>
+              <input class="auth-input__input" type="password" name="cpw" ng-model="user.cpw" compare-to="user.pw" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.cpw.$error" ng-show="authForm.cpw.$touched">
+              <span ng-message="required">Please confirm password.</span>
+              <span ng-message="compareTo">Password does not match.</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="checking" class="auth-input__label">
+                <span class="auth-input__label-text">Checking</span>
+              </label>
+              <input class="auth-input__input" type="number" name="checking" ng-model="user.checking" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.checking.$error" ng-show="authForm.checking.$touched">
+              <span ng-message="required">Enter Checking.</span>
+              <span ng-message="number">Checking must be a number.</span>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="trading" class="auth-input__label">
+                <span class="auth-input__label-text">Trading</span>
+              </label>
+              <input class="auth-input__input" type="number" name="trading" ng-model="user.trading" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.trading.$error" ng-show="authForm.trading.$touched">
+              <span ng-message="required">Enter Trading.</span>
+              <span ng-message="number">Trading must be a number.</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="gender" class="auth-input__label">
+                <span class="auth-input__label-text">Gender</span>
+              </label>
+              <select class="auth-input__input" name="gender" ng-model="user.gender" required >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+            <div class="error-messages" ng-messages="authForm.gender.$error" ng-show="authForm.gender.$touched">
+              <span ng-message="required">Select gender.</span>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="phone" class="auth-input__label">
+                <span class="auth-input__label-text">Phone Number</span>
+              </label>
+              <input class="auth-input__input" type="number" name="phone" ng-model="user.phone" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.phone.$error" ng-show="authForm.phone.$touched" ng-minlength="10">
+              <span ng-message="required">Enter Phone Number.</span>
+              <span ng-message="number">Must be 10 digits.</span>
+              <span ng-message="minlength">Must be 10 digits.</span>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="addr" class="auth-input__label">
+                <span class="auth-input__label-text">Address</span>
+              </label>
+              <input class="auth-input__input" type="text" name="addr" ng-model="user.addr" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.addr.$error" ng-show="authForm.addr.$touched">
+              <span ng-message="required">Enter Address.</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="town" class="auth-input__label">
+                <span class="auth-input__label-text">Town / City</span>
+              </label>
+              <input class="auth-input__input" type="text" name="town" ng-model="user.town" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.town.$error" ng-show="authForm.town.$touched">
+              <span ng-message="required">Enter Town / City.</span>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="state" class="auth-input__label">
+                <span class="auth-input__label-text">State</span>
+              </label>
+              <input class="auth-input__input" type="text" name="state" ng-model="user.state" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.state.$error" ng-show="authForm.state.$touched">
+              <span ng-message="required">Enter State.</span>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="auth-input">
+              <div class="auth-input__effect"></div>
+              <label for="zip" class="auth-input__label">
+                <span class="auth-input__label-text">Zip Code</span>
+              </label>
+              <input class="auth-input__input" type="text" name="zip" ng-model="user.zip" required />
+            </div>
+            <div class="error-messages" ng-messages="authForm.zip.$error" ng-show="authForm.zip.$touched">
+              <span ng-message="required">Enter Zip Code.</span>
+            </div>
+          </div>
+        </div>
+        <auth-btn text="Signup"></auth-btn>
+      </div>
+    </form>
+  </div>
+</div>
