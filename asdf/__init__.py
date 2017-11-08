@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
-app.config.from_object("app.config.DevelopmentConfig")
+app.config.from_object("asdf.config.DevelopmentConfig")
 db = SQLAlchemy(app)
 app.config["SECRET_KEY"] = "asdf"
 if app.config["DEBUG"]:
@@ -12,5 +12,5 @@ if app.config["DEBUG"]:
     })
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
-from app.models import user, trade
-from app.views import base, auth, user, trade
+from asdf.models import user, trade
+from asdf.views import base, auth, user, trade

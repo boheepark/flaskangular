@@ -2,10 +2,10 @@ from sqlalchemy import Column, Integer, Numeric, String, ForeignKey, TIMESTAMP, 
 
 from datetime import datetime
 
-from app import db
+from asdf import db
 
 class Trade(db.Model):
-    __tablename__ = "trade"
+    __tablename__ = "trades"
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("user.id"), nullable=False)
     company = Column(String(), nullable=False)

@@ -1,5 +1,5 @@
 from flask import send_file
-from app import app
+from asdf import app
 
 
 @app.route("/")

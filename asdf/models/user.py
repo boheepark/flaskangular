@@ -1,12 +1,12 @@
-from sqlalchemy import Column, Integer, Numeric, String, TIMESTAMP, func
+from sqlalchemy import Column, Integer, Numeric, String, Boolean, TIMESTAMP, func
 
 import jwt
 from datetime import datetime, timedelta
 
-from app import app, db, bcrypt
+from asdf import app, db, bcrypt
 
 class User(db.Model):
-    __tablename__ = "user"
+    __tablename__ = "users"
     id = Column(Integer, primary_key=True)
     uname = Column(String(), unique=True, nullable=False)
     name = Column(String(), unique=True, nullable=False)
@@ -20,6 +20,7 @@ class User(db.Model):
     town = Column(String(), nullable=False)
     state = Column(String(), nullable=False)
     zip = Column(String(), nullable=False)
+    active = Column(Boolean(), default=False, nullable=False)
     last_seen = Column(TIMESTAMP, default=datetime.now(), server_default=func.now(), nullable=False)
     updated_at = Column(TIMESTAMP, default=datetime.now(), server_default=func.now(), nullable=False)
     created_at = Column(TIMESTAMP, default=datetime.now(), server_default=func.now(), nullable=False)
@@ -73,8 +74,8 @@ class User(db.Model):
     def encode_auth_token(self, user_id):
         try:
             return jwt.encode({
-                "exp": datetime.utcnow() + timedelta(days=1, seconds=5),
-                "iat": datetime.utcnow(),
+                "exp": datetime.now() + timedelta(days=1, seconds=5),
+                "iat": datetime.now(),
                 "sub": user_id
                 }, "asdf", algorithm="HS256")
         except Exception as e:

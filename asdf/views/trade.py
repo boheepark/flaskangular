@@ -3,9 +3,9 @@ from sqlalchemy import exc
 
 from datetime import datetime
 
-from app.models.user import User
-from app.models.trade import Trade
-from app import app, db
+from asdf.models.user import User
+from asdf.models.trade import Trade
+from asdf import app, db
 
 @app.route("/api/trade/buy", methods = ["POST"])
 def trading_buy():

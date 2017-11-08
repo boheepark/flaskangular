@@ -1,7 +1,7 @@
 from flask import request, jsonify
-from app.models.user import User
-from app.models.trade import Trade
-from app import app, db
+from asdf.models.user import User
+from asdf.models.trade import Trade
+from asdf import app, db
 
 
 @app.route("/api/user", methods = ["POST"])

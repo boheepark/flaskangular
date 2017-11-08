@@ -1,7 +1,7 @@
 from flask import request, jsonify
 from sqlalchemy import exc
-from app import app, bcrypt, db
-from app.models.user import User
+from asdf import app, bcrypt, db
+from asdf.models.user import User
 
 
 @app.route("/auth/signin", methods = ["POST"])
