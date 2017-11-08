@@ -1,13 +1,9 @@
-# from flask.ext.script import Manager
-from flask.ext.migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
 import unittest
 
 from asdf import app, db
-migrate = Migrate(app, db)
 manager = Manager(app)
-manager.add_command("db", MigrateCommand)
 @manager.command
 def recreate_db():
     db.drop_all()
