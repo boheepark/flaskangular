@@ -5,23 +5,34 @@ SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "data.db")
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, "db_repository")
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-class BaseConfig:
+class Config:
     DEBUG = False
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     CSRF_ENABLED = True
     SECRET_KEY = "asdf"
 
-class DevelopmentConfig(BaseConfig):
+class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
-class TestingConfig(BaseConfig):
+class TestingConfig(Config):
     TESTING = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_TEST_URL")
+    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_TEST_URL")
+    SQLALCHEMY_DATABASE_URI = "postgresql://localhost/test_db"
 
-class ProductionConfig(BaseConfig):
+class StagingConfig(Config):
+    DEBUG = True
+
+class ProductionConfig(Config):
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+
+app_config = {
+    "development": DevelopmentConfig,
+    "testing": TestingConfig,
+    "staging": StagingConfig,
+    "production": ProductionConfig
+}
