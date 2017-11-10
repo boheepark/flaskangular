@@ -7,7 +7,7 @@ from asdf import db
 class Trade(db.Model):
     __tablename__ = "trades"
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey("user.id"), nullable=False)
+    user_id = Column(Integer, nullable=False)
     company = Column(String(), nullable=False)
     price = Column(Numeric(), nullable=False)
     quantity = Column(Integer, nullable=False)
