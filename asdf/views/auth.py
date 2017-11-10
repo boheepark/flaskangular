@@ -33,6 +33,7 @@ def signup():
             town=data["town"],
             state=data["state"],
             zip=data["zip"],
+            last_seen=None,
             updated_at=None,
             created_at=None
         )

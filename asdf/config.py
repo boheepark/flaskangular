@@ -12,6 +12,7 @@ class Config:
     CSRF_ENABLED = True
     SECRET_KEY = "asdf"
     SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
