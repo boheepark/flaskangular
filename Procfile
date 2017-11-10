@@ -1,1 +1,1 @@
-web: npm install && bower install && gunicorn asdf:app
+web: gunicorn asdf:app
