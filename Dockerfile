@@ -39,9 +39,5 @@ ENV JSPM_BIN /usr/local/bin/jspm
 # setup npm
 RUN npm install
 
-# setup bower
-RUN . setup.sh
-RUN bower install
-
 # run server
 CMD python manage.py runserver -h 0.0.0.0
