@@ -7,9 +7,8 @@ class TestUserService(BaseTestCase):
 
     def test_users(self):
         """Ensure the /ping route behaves correctly."""
-        pass
-        response = self.client.get('/ping')
-        data = json.loads(response.data.decode())
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('pong!', data['message'])
+        res = self.client.get('/api/user/unames')
+        data = json.loads(res.data.decode())
+        self.assertEqual(res.status_code, 200)
+        self.assertIn('asdf', data['data'])
         self.assertIn('success', data['status'])
