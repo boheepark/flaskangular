@@ -6,7 +6,7 @@ class TestUserService(BaseTestCase):
     """Tests for the Users Service."""
 
     def test_users(self):
-        """Ensure the /ping route behaves correctly."""
+        """Ensure the /api/user/unames route behaves correctly."""
         res = self.client.get('/api/user/unames')
         data = json.loads(res.data.decode())
         self.assertEqual(res.status_code, 200)
