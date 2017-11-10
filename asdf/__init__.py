@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
-app.config.from_object("asdf.config.DevelopmentConfig")
+app.config.from_object(os.environ["APP_SETTINGS"])
 db = SQLAlchemy(app)
 app.config["SECRET_KEY"] = "asdf"
 if app.config["DEBUG"]:
