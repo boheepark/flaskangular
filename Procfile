@@ -1,1 +1,1 @@
-web: gunicorn asdf:app
+web: npm install && gunicorn asdf:app
