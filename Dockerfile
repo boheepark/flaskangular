@@ -28,7 +28,8 @@ RUN \
   rm -rf /tmp/node-v* && \
   npm install -g npm && \
   npm install -g jspm && \
-  printf '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> /root/.bashrc
+  printf '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> /root/.bashrc && \
+  cd
 
 # Used by Beyond build scripts
 ENV NODE_BIN /usr/local/bin/node
