@@ -11,11 +11,11 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     CSRF_ENABLED = True
     SECRET_KEY = "asdf"
+    SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
 
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 class TestingConfig(Config):
     TESTING = True
@@ -28,7 +28,7 @@ class StagingConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
 
 app_config = {
     "development": DevelopmentConfig,
