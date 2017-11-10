@@ -10,8 +10,8 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    healthcheck:
-      test: exit 0
+    # healthcheck:
+    #   test: exit 0
 
   asdf-service:
     container_name: asdf-service
@@ -24,8 +24,8 @@ services:
       - APP_SETTINGS=asdf.config.DevelopmentConfig
       - DATABASE_URL=postgres://postgres@asdf-db:5432/asdf_dev
       - DATABASE_TEST_URL=postgres://postgres:postgres@asdf-db:5432/asdf_test
-    depends_on:
-      asdf-db:
-        condition: service_healthy
-      links:
-        - asdf-db
+    # depends_on:
+    #   asdf-db:
+    #     condition: service_healthy
+    #   links:
+    #     - asdf-db
