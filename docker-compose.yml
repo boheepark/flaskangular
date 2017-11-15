@@ -2,8 +2,8 @@ version: '2.1'
 
 services:
 
-  asdf-db:
-    container_name: asdf-db
+  users-db:
+    container_name: users-db
     build: ./asdf/db
     ports:
       - 5435:5432 # expose ports - HOST:CONTAINER
@@ -13,8 +13,8 @@ services:
     healthcheck:
       test: exit 0
 
-  asdf-service:
-    container_name: asdf-service
+  users-service:
+    container_name: users-service
     build: ./
     volumes:
       - '.:/usr/src/asdf'
@@ -25,7 +25,7 @@ services:
       - DATABASE_URL=postgres://postgres@asdf-db:5432/asdf_dev
       - DATABASE_TEST_URL=postgres://postgres:postgres@asdf-db:5432/asdf_test
     depends_on:
-      asdf-db:
+      users-db:
         condition: service_healthy
       links:
-        - asdf-db
+        - users-db
