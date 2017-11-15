@@ -1,8 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 import os
 
 db = SQLAlchemy()
+bcrypt = Bcrypt()
 
 def create_app():
     app = Flask(__name__)
@@ -14,8 +16,7 @@ def create_app():
         app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
             "/": os.path.join(os.path.dirname(__file__), "static")
         })
-    from flask_bcrypt import Bcrypt
-    bcrypt = Bcrypt(app)
+    bcrypt.init_app(app)
 
     from asdf.api.views.auth import auth_blueprint
     app.register_blueprint(auth_blueprint)
