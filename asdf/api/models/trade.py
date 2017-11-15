@@ -12,7 +12,6 @@ class Trade(db.Model):
     price = Column(Numeric(), nullable=False)
     quantity = Column(Integer, nullable=False)
     total = Column(Numeric(), nullable=False)
-    # created_at = Column(TIMESTAMP, default=datetime.utcnow(), server_default=func.now(), nullable=False)
     created_at = Column(TIMESTAMP, default=datetime.now(), server_default=func.now(), nullable=False)
 
     def __init__(self, id, user_id, company, price, quantity, total, created_at):
