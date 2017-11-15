@@ -10,5 +10,4 @@ class TestUserService(BaseTestCase):
         res = self.client.get('/api/user/unames')
         data = json.loads(res.data.decode())
         self.assertEqual(res.status_code, 200)
-        self.assertIn('asdf', data['data'])
         self.assertIn('success', data['status'])
