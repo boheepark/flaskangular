@@ -22,22 +22,23 @@ def signup():
     data = request.get_json()
     try:
         new_user = User(
-            id=None,
-            uname=data["uname"],
-            name=data["name"],
-            email=data["email"],
-            pw=data["pw"],
-            checking=data["checking"],
-            trading=data["trading"],
-            gender=data["gender"],
-            phone=data["phone"],
-            addr=data["addr"],
-            town=data["town"],
-            state=data["state"],
-            zip=data["zip"],
-            last_seen=None,
-            updated_at=None,
-            created_at=None
+            id = None,
+            uname = data["uname"],
+            name = data["name"],
+            email = data["email"],
+            pw = data["pw"],
+            checking = data["checking"],
+            trading = data["trading"],
+            gender = data["gender"],
+            phone = data["phone"],
+            addr = data["addr"],
+            town = data["town"],
+            state = data["state"],
+            zip = data["zip"],
+            active = True,
+            last_seen = None,
+            updated_at = None,
+            created_at = None
         )
         db.session.add(new_user)
         db.session.commit()
