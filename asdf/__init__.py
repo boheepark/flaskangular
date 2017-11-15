@@ -5,7 +5,6 @@ app = Flask(__name__)
 app_settings = os.getenv("APP_SETTINGS")
 app.config.from_object(app_settings)
 db = SQLAlchemy(app)
-app.config["SECRET_KEY"] = "asdf"
 if app.config["DEBUG"]:
     from werkzeug import SharedDataMiddleware
     import os
