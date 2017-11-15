@@ -4,7 +4,7 @@ from asdf import app, db
 
 class BaseTestCase(TestCase):
     def create_app(self):
-        app.config.from_object('asdf.config.TestingConfig')
+        app.config.from_object("asdf.config.TestingConfig")
         return app
 
     def setUp(self):
