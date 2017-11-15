@@ -3,8 +3,10 @@ from sqlalchemy import Column, Integer, Numeric, String, Boolean, TIMESTAMP, fun
 import jwt
 from datetime import datetime, timedelta
 
-from asdf import app, db, bcrypt
+from asdf import create_app, db, bcrypt
 
+
+app = create_app()
 class User(db.Model):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True)
