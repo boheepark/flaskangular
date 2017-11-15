@@ -1,10 +1,12 @@
-from flask import request, jsonify
+from flask import Blueprint, request, jsonify
 from sqlalchemy import exc
 from asdf import app, bcrypt, db
 from asdf.models.user import User
 
+auth_blueprint = Blueprint("auth", __name__)
 
-@app.route("/auth/signin", methods = ["POST"])
+
+@auth_blueprint.route("/auth/signin", methods = ["POST"])
 def signin():
     data = request.get_json()
     user = User.query.filter(User.uname == data["uname"]).first()
@@ -15,7 +17,7 @@ def signin():
             "token": token.decode()
         }), 200
 
-@app.route("/auth/signup", methods = ["POST"])
+@auth_blueprint.route("/auth/signup", methods = ["POST"])
 def signup():
     data = request.get_json()
     try:
@@ -52,7 +54,7 @@ def signup():
             "message": str(e)
         }), 400
 
-@app.route("/auth/checkUname", methods = ["POST"])
+@auth_blueprint.route("/auth/checkUname", methods = ["POST"])
 def check_uname():
     data = request.get_json()
     users = User.query.all()
@@ -68,7 +70,7 @@ def check_uname():
         "value": True
     })
 
-@app.route("/auth/checkEmail", methods = ["POST"])
+@auth_blueprint.route("/auth/checkEmail", methods = ["POST"])
 def check_email():
     data = request.get_json()
     users = User.query.all()
