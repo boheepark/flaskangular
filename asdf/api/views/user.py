@@ -1,10 +1,12 @@
-from flask import request, jsonify
-from asdf.models.user import User
-from asdf.models.trade import Trade
-from asdf import app, db
+from flask import Blueprint, request, jsonify
+from asdf.api.models.user import User
+from asdf.api.models.trade import Trade
+from asdf import db
 
 
-@app.route("/api/user", methods = ["POST"])
+users_blueprint = Blueprint("users", __name__)
+
+@users_blueprint.route("/api/user", methods = ["POST"])
 def get_user_by_token():
     data = request.get_json()
     user_id = User.decode_auth_token(data["token"])
@@ -26,7 +28,7 @@ def get_user_by_token():
             "data": serialized_user
         }), 200
 
-@app.route("/api/user/trades", methods = ["POST"])
+@users_blueprint.route("/api/user/trades", methods = ["POST"])
 def get_trades_by_token():
     data = request.get_json()
     user_id = User.decode_auth_token(data["token"])
@@ -38,7 +40,7 @@ def get_trades_by_token():
 
 #NOTE how to make more secure?
 # should i send token?
-@app.route("/api/user/unames", methods = ["GET"])
+@users_blueprint.route("/api/user/unames", methods = ["GET"])
 def get_unames():
     users = User.query.all()
     return jsonify({
@@ -46,7 +48,7 @@ def get_unames():
         "data": [user.username for user in users]
     })
 
-@app.route("/api/user/emails", methods = ["GET"])
+@users_blueprint.route("/api/user/emails", methods = ["GET"])
 def get_emails():
     users = User.query.all()
     return jsonify({

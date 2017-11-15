@@ -16,8 +16,15 @@ def create_app():
         })
     from flask_bcrypt import Bcrypt
     bcrypt = Bcrypt(app)
+
     from asdf.api.views.auth import auth_blueprint
     app.register_blueprint(auth_blueprint)
+    from asdf.api.views.base import base_blueprint
+    app.register_blueprint(base_blueprint)
+    from asdf.api.views.trade import trades_blueprint
+    app.register_blueprint(trades_blueprint)
+    from asdf.api.views.user import users_blueprint
+    app.register_blueprint(users_blueprint)
 
     from asdf.api.models import user, trade
     from asdf.api.views import base, auth, user, trade

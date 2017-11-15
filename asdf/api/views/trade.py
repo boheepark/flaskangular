@@ -1,13 +1,15 @@
-from flask import request, jsonify
+from flask import Blueprint, request, jsonify
 from sqlalchemy import exc
 
 from datetime import datetime
 
-from asdf.models.user import User
-from asdf.models.trade import Trade
-from asdf import app, db
+from asdf.api.models.user import User
+from asdf.api.models.trade import Trade
+from asdf import db
 
-@app.route("/api/trade/buy", methods = ["POST"])
+trades_blueprint = Blueprint("trades", __name__)
+
+@trades_blueprint.route("/api/trade/buy", methods = ["POST"])
 def trading_buy():
     data = request.get_json()
     try:
