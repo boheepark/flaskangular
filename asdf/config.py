@@ -5,7 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 # SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, "db_repository")
 # SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-class Config:
+class BaseConfig:
     DEBUG = False
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -14,20 +14,19 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-class DevelopmentConfig(Config):
+class DevelopmentConfig(BaseConfig):
     DEVELOPMENT = True
     DEBUG = True
 
-class TestingConfig(Config):
+class TestingConfig(BaseConfig):
     TESTING = True
     DEBUG = True
-    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_TEST_URL")
     SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_TEST_URL"]
 
-class StagingConfig(Config):
+class StagingConfig(BaseConfig):
     DEBUG = True
 
-class ProductionConfig(Config):
+class ProductionConfig(BaseConfig):
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
 
