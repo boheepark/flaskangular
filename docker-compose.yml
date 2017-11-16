@@ -27,5 +27,5 @@ services:
     depends_on:
       asdf-db:
         condition: service_healthy
-      links:
-        - asdf-db
+    links:
+      - "asdf-db"
