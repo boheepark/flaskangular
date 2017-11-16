@@ -19,7 +19,7 @@ class TestDevelopmentConfig(TestCase):
         self.assertFalse(current_app is None)
         self.assertTrue(
             app.config['SQLALCHEMY_DATABASE_URI'] ==
-            'postgres://postgres:postgres@localhost:5432/asdf_dev'
+            'postgres://postgres:postgres@asdf-db:5432/asdf_dev'
         )
 
 
@@ -35,7 +35,7 @@ class TestTestingConfig(TestCase):
         self.assertFalse(app.config['PRESERVE_CONTEXT_ON_EXCEPTION'])
         self.assertTrue(
             app.config['SQLALCHEMY_DATABASE_URI'] ==
-            'postgres://postgres:postgres@localhost:5432/asdf_test'
+            'postgres://postgres:postgres@asdf-db:5432/asdf_test'
         )
 
 
