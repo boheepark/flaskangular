@@ -11,6 +11,8 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command("db", MigrateCommand)
 
+print(app.static_folder)
+
 @manager.command
 def test():
     """Runs the tests without code coverage."""

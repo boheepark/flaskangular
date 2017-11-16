@@ -13,3 +13,4 @@ venv
 
 # yarn
 yarn.lock
+yarn-error.log
