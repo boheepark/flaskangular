@@ -8,3 +8,6 @@ bower_components
 
 # VirtualEnv
 venv
+
+# SASS
+.sass-cache

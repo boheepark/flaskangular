@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from asdf import db
+from app import db
 
 class Trade(db.Model):
     __tablename__ = "trades"

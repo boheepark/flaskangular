@@ -1,8 +1,8 @@
 import json
 
-from asdf import db
-from asdf.api.models.user import User
-from asdf.tests.base import BaseTestCase
+from app import db
+from app.api.models.user import User
+from app.tests.base import BaseTestCase
 
 
 def add_user(uname, name, email, pw, checking, trading, gender, phone, addr, town, state, zip):

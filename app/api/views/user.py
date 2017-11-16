@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
-from asdf.api.models.user import User
-from asdf.api.models.trade import Trade
-from asdf import db
+from app.api.models.user import User
+from app.api.models.trade import Trade
+from app import db
 
 
 users_blueprint = Blueprint("users", __name__)

@@ -3,8 +3,8 @@ from flask_migrate import Migrate, MigrateCommand
 
 import unittest
 
-from asdf import create_app, db
-from asdf.api.models.user import User
+from app import create_app, db
+from app.api.models.user import User
 
 app = create_app()
 migrate = Migrate(app, db)

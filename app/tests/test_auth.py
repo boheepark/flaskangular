@@ -1,6 +1,6 @@
 import json
 
-from asdf.tests.base import BaseTestCase
+from app.tests.base import BaseTestCase
 
 class TestAuthService(BaseTestCase):
 
