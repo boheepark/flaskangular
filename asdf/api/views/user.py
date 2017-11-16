@@ -36,7 +36,7 @@ def get_trades_by_token():
     return jsonify({
         "status": "success",
         "data": [trade.serialize for trade in trades]
-    })
+    }), 200
 
 #NOTE how to make more secure?
 # should i send token?
@@ -46,7 +46,7 @@ def get_unames():
     return jsonify({
         "status": "success",
         "data": [user.uname for user in users]
-    })
+    }), 200
 
 @users_blueprint.route("/api/user/emails", methods = ["GET"])
 def get_emails():
@@ -54,4 +54,4 @@ def get_emails():
     return jsonify({
         "status": "success",
         "data": [user.email for user in users]
-    })
+    }), 200
