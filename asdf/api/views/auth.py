@@ -25,36 +25,41 @@ def signup():
             "status": "fail",
             "message": "Empty payload."
         }), 400
-    # meta = MetaData()
-    # meta.reflect(bind=db)
-    # for column in meta.tables["users"].columns.keys():
-    #     if not data[column]:
-    #         return jsonify({
-    #             "status": "fail",
-    #             "message": "Incomplete payload."
-    #         })
-    for column in User.__table__.columns:
-        print(column)
-        if not data[column]:
-            return jsonify({
-                "status": "fail",
-                "message": "Incomplete payload."
-            })
+    try:
+        uname = data["uname"]
+        name = data["name"]
+        email = data["email"]
+        pw = data["pw"]
+        checking = data["checking"]
+        trading = data["trading"]
+        gender = data["gender"]
+        phone = data["phone"]
+        addr = data["addr"]
+        town = data["town"]
+        state = data["state"]
+        zip = data["zip"]
+    except KeyError as e:
+        return jsonify({
+            "status": "fail",
+            "message": "Incomplete payload."
+        }), 400
+    except Exception as e:
+        print(e)
     try:
         new_user = User(
             id = None,
-            uname = data["uname"],
-            name = data["name"],
-            email = data["email"],
-            pw = data["pw"],
-            checking = data["checking"],
-            trading = data["trading"],
-            gender = data["gender"],
-            phone = data["phone"],
-            addr = data["addr"],
-            town = data["town"],
-            state = data["state"],
-            zip = data["zip"],
+            uname = uname,
+            name = name,
+            email = email,
+            pw = pw,
+            checking = checking,
+            trading = trading,
+            gender = gender,
+            phone = phone,
+            addr = addr,
+            town = town,
+            state = state,
+            zip = zip,
             active = True,
             last_seen = None,
             updated_at = None,
@@ -62,7 +67,7 @@ def signup():
         )
         db.session.add(new_user)
         db.session.commit()
-        user = User.query.filter(User.uname == data["uname"]).first()
+        user = User.query.filter(User.uname == uname).first()
         token = new_user.encode_auth_token(new_user.id)
         return jsonify({
             "status": "success",
