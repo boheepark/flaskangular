@@ -3,9 +3,9 @@ from sqlalchemy import exc
 
 from datetime import datetime
 
-from app.api.models.user import User
-from app.api.models.trade import Trade
-from app import db
+from asdf.api.models.user import User
+from asdf.api.models.trade import Trade
+from asdf import db
 
 trades_blueprint = Blueprint("trades", __name__)
 
