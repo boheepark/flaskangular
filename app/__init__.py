@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from flask_yarn import Yarn
 import os
 
 db = SQLAlchemy()
@@ -8,8 +9,8 @@ bcrypt = Bcrypt()
 
 def create_app():
     app = Flask(__name__)
-    app_settings = os.getenv("APP_SETTINGS")
-    app.config.from_object(app_settings)
+    Yarn(app)
+    app.config.from_object(os.getenv("APP_SETTINGS"))
     db.init_app(app)
     if app.config["DEBUG"]:
         from werkzeug import SharedDataMiddleware

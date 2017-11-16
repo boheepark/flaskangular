@@ -14,3 +14,8 @@ venv
 # yarn
 yarn.lock
 yarn-error.log
+
+# visual studio?
+.vs
+*.vbproj
+obj
