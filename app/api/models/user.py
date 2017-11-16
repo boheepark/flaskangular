@@ -2,7 +2,7 @@ from flask import current_app
 import jwt
 from datetime import datetime, timedelta
 
-from asdf import db, bcrypt
+from app import db, bcrypt
 
 
 class User(db.Model):

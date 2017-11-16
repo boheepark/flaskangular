@@ -3,8 +3,8 @@ from flask_migrate import Migrate, MigrateCommand
 
 import unittest
 
-from asdf import create_app, db
-from asdf.api.models.user import User
+from app import create_app, db
+from app.api.models.user import User
 
 app = create_app()
 migrate = Migrate(app, db)
@@ -14,7 +14,7 @@ manager.add_command("db", MigrateCommand)
 @manager.command
 def test():
     """Runs the tests without code coverage."""
-    tests = unittest.TestLoader().discover('asdf/tests', pattern='test*.py')
+    tests = unittest.TestLoader().discover('app/tests', pattern='test*.py')
     result = unittest.TextTestRunner(verbosity=2).run(tests)
     if result.wasSuccessful():
         return 0

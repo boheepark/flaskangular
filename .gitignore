@@ -4,10 +4,12 @@ __pycache__
 
 # Node
 node_modules
-bower_components
 
 # VirtualEnv
 venv
 
 # SASS
 .sass-cache
+
+# yarn
+yarn.lock
