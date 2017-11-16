@@ -25,5 +25,12 @@ def recreate_db():
     db.create_all()
     db.session.commit()
 
+@manager.command
+def seed_db():
+    db.session.add(User(None,"test","name","test@asdf.com","TestPa$$3121",100000,100000,"male","1234567890","123 Main St.","Fort Lee","NJ","07024",None,None,None,None))
+    db.session.add(User(None,"test2","name2","test2@asdf.com","TestPa$$3121",100000,100000,"male","1234567890","123 Main St.","Fort Lee","NJ","07024",None,None,None,None))
+    db.session.add(User(None,"test3","name3","test3@asdf.com","TestPa$$3121",100000,100000,"male","1234567890","123 Main St.","Fort Lee","NJ","07024",None,None,None,None))
+    db.session.commit()
+
 if __name__ == "__main__":
     manager.run()
