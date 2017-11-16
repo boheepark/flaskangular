@@ -1,5 +1,4 @@
-from sqlalchemy import Column, Integer, Numeric, String, Boolean, TIMESTAMP, func
-
+from flask import current_app
 import jwt
 from datetime import datetime, timedelta
 
@@ -8,23 +7,23 @@ from asdf import db, bcrypt
 
 class User(db.Model):
     __tablename__ = "users"
-    id = Column(Integer, primary_key=True)
-    uname = Column(String(), unique=True, nullable=False)
-    name = Column(String(), unique=True, nullable=False)
-    email = Column(String(), unique=True, nullable=False)
-    pw = Column(String(), nullable=False)
-    checking = Column(Numeric(), nullable = False)
-    trading = Column(Numeric(), nullable = False)
-    gender = Column(String(6), nullable=False)
-    phone = Column(String(10), nullable=False)
-    addr = Column(String(), nullable=False)
-    town = Column(String(), nullable=False)
-    state = Column(String(2), nullable=False)
-    zip = Column(String(5), nullable=False)
-    active = Column(Boolean(), default=False, nullable=False) #NOTE implement this
-    last_seen = Column(TIMESTAMP, default=datetime.now(), server_default=func.now(), nullable=False)
-    updated_at = Column(TIMESTAMP, default=datetime.now(), server_default=func.now(), nullable=False)
-    created_at = Column(TIMESTAMP, default=datetime.now(), server_default=func.now(), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    uname = db.Column(db.String(), unique=True, nullable=False)
+    name = db.Column(db.String(), unique=True, nullable=False)
+    email = db.Column(db.String(), unique=True, nullable=False)
+    pw = db.Column(db.String(), nullable=False)
+    checking = db.Column(db.Numeric(), nullable = False)
+    trading = db.Column(db.Numeric(), nullable = False)
+    gender = db.Column(db.String(6), nullable=False)
+    phone = db.Column(db.String(10), nullable=False)
+    addr = db.Column(db.String(), nullable=False)
+    town = db.Column(db.String(), nullable=False)
+    state = db.Column(db.String(2), nullable=False)
+    zip = db.Column(db.String(5), nullable=False)
+    active = db.Column(db.Boolean(), default=False, nullable=False) #NOTE implement this
+    last_seen = db.Column(db.TIMESTAMP, default=datetime.now(), nullable=False) #NOTE implement this
+    updated_at = db.Column(db.TIMESTAMP, default=datetime.now(), onupdate=datetime.now(), nullable=False)
+    created_at = db.Column(db.TIMESTAMP, default=datetime.now(), nullable=False)
 
     def __init__(self, id, uname, name, email, pw, checking, trading, gender, phone, addr, town, state, zip, active, last_seen, updated_at, created_at):
         self.id = id
@@ -87,8 +86,8 @@ class User(db.Model):
     @staticmethod
     def decode_auth_token(token):
         try:
-            # payload = jwt.decode(token, app.config["SECRET_KEY"])
-            payload = jwt.decode(token, "asdf")
+            payload = jwt.decode(token, current_app.config["SECRET_KEY"])
+            # payload = jwt.decode(token, "asdf")
             return payload["sub"]
         except jwt.ExpiredSignatureError:
             return "Signature expired. Please log in again."

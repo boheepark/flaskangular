@@ -1,18 +1,16 @@
-from sqlalchemy import Column, Integer, Numeric, String, ForeignKey, TIMESTAMP, func
-
 from datetime import datetime
 
 from asdf import db
 
 class Trade(db.Model):
     __tablename__ = "trades"
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, nullable=False)
-    company = Column(String(), nullable=False)
-    price = Column(Numeric(), nullable=False)
-    quantity = Column(Integer, nullable=False)
-    total = Column(Numeric(), nullable=False)
-    created_at = Column(TIMESTAMP, default=datetime.now(), server_default=func.now(), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, nullable=False)
+    company = db.Column(db.String(), nullable=False)
+    price = db.Column(db.Numeric(), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    total = db.Column(db.Numeric(), nullable=False)
+    created_at = db.Column(db.TIMESTAMP, default=datetime.now(), nullable=False)
 
     def __init__(self, id, user_id, company, price, quantity, total, created_at):
         self.id = id
