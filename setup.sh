@@ -1,2 +1,2 @@
-PATH=$HOME/ridwan/asdf/node_modules/.bin:$PATH
+PATH=$HOME/jobs/ridwan/asdf/node_modules/.bin:$PATH
 echo "source `which activate.sh`" >> ~/.bashrc
