@@ -20,7 +20,7 @@ def add_user(uname, name, email, pw, checking, trading, gender, phone, addr, tow
         town = town,
         state = state,
         zip = zip,
-        active = True,
+        active = None,
         last_seen = None,
         updated_at = None,
         created_at = None
