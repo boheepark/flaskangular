@@ -20,6 +20,12 @@ def signin():
 @auth_blueprint.route("/auth/signup", methods = ["POST"])
 def signup():
     data = request.get_json()
+    if not data:
+        return jsonify({
+            "status": "fail",
+            "message": "Empty payload."
+        }), 400
+
     try:
         new_user = User(
             id = None,
@@ -49,7 +55,7 @@ def signup():
             "token": token.decode()
         }), 201
     except exc.IntegrityError as e:
-        session.rollback()
+        db.session.rollback()
         return jsonify({
             "status": "fail",
             "message": str(e)
