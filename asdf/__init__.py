@@ -28,6 +28,6 @@ def create_app():
     app.register_blueprint(users_blueprint)
 
     from asdf.api.models import user, trade
-    from asdf.api.views import base, auth, user, trade
+    # from asdf.api.views import base, auth, user, trade
 
     return app
