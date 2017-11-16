@@ -1,7 +1,7 @@
-from flask import Blueprint, send_file
+from flask import Blueprint, render_template
 
 
 base_blueprint = Blueprint("base", __name__)
 @base_blueprint.route("/")
 def index():
-    return send_file("templates/index.html")
+    return render_template("templates/index.html")
