@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from sqlalchemy import exc, MetaData
+from sqlalchemy import exc
 from asdf import bcrypt, db
 from asdf.api.models.user import User
 
