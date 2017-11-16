@@ -45,7 +45,7 @@ def get_unames():
     users = User.query.all()
     return jsonify({
         "status": "success",
-        "data": [user.username for user in users]
+        "data": [user.uname for user in users]
     })
 
 @users_blueprint.route("/api/user/emails", methods = ["GET"])
