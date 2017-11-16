@@ -21,7 +21,7 @@ class User(db.Model):
     town = Column(String(), nullable=False)
     state = Column(String(2), nullable=False)
     zip = Column(String(5), nullable=False)
-    active = Column(Boolean(), default=False, nullable=False)
+    active = Column(Boolean(), default=False, nullable=False) #NOTE implement this
     last_seen = Column(TIMESTAMP, default=datetime.now(), server_default=func.now(), nullable=False)
     updated_at = Column(TIMESTAMP, default=datetime.now(), server_default=func.now(), nullable=False)
     created_at = Column(TIMESTAMP, default=datetime.now(), server_default=func.now(), nullable=False)
