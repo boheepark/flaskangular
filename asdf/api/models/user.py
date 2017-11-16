@@ -26,7 +26,7 @@ class User(db.Model):
     updated_at = Column(TIMESTAMP, default=datetime.now(), server_default=func.now(), nullable=False)
     created_at = Column(TIMESTAMP, default=datetime.now(), server_default=func.now(), nullable=False)
 
-    def __init__(self, id, uname, name, email, pw, checking, trading, gender, phone, addr, town, state, zip, last_seen, updated_at, created_at):
+    def __init__(self, id, uname, name, email, pw, checking, trading, gender, phone, addr, town, state, zip, active, last_seen, updated_at, created_at):
         self.id = id
         self.uname = uname
         self.name = name
@@ -40,6 +40,7 @@ class User(db.Model):
         self.town = town
         self.state = state
         self.zip = zip
+        self.active = active
         self.last_seen = last_seen
         self.updated_at = updated_at
         self.created_at = created_at
@@ -59,6 +60,7 @@ class User(db.Model):
             "town": self.town,
             "state": self.state,
             "zip": self.zip,
+            "active": self.active,
             "last_seen": self.last_seen,
             "updated_at": self.updated_at,
             "created_at": self.created_at
