@@ -25,15 +25,21 @@ def signup():
             "status": "fail",
             "message": "Empty payload."
         }), 400
-    meta = MetaData()
-    meta.reflect(bind=db)
-    for column in meta.tables["users"].columns.keys():
+    # meta = MetaData()
+    # meta.reflect(bind=db)
+    # for column in meta.tables["users"].columns.keys():
+    #     if not data[column]:
+    #         return jsonify({
+    #             "status": "fail",
+    #             "message": "Incomplete payload."
+    #         })
+    for column in User.__table__.columns:
+        print(column)
         if not data[column]:
             return jsonify({
                 "status": "fail",
                 "message": "Incomplete payload."
             })
-        print(column)
     try:
         new_user = User(
             id = None,
