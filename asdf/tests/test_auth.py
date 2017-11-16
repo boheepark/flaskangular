@@ -29,14 +29,15 @@ class TestAuthService(BaseTestCase):
             self.assertEqual(res.status_code, 200)
             self.assertIn("uname", data["data"])
 
-    def test_signup_empty_json(self):
+    def test_signup_empty(self):
         with self.client:
             res = self.client.post("/auth/signup", data=json.dumps(dict()), content_type="application/json")
             data = json.loads(res.data.decode())
             self.assertEqual(res.status_code, 400)
+            self.assertIn("Empty payload.", data["message"])
             self.assertIn("fail", data["status"])
 
-    def test_signup_missing_fields(self):
+    def test_signup_incomplete(self):
         with self.client:
             res = self.client.post("/auth/signup", data=json.dumps(dict(
                 uname="uname",
@@ -47,6 +48,7 @@ class TestAuthService(BaseTestCase):
             content_type="application/json")
             data = json.loads(res.data.decode())
             self.assertEqual(res.status_code, 400)
+            self.assertIn("Incomplete payload.", data["message"])
             self.assertIn("fail", data["status"])
 
     def test_signup_duplicate_user(self):
