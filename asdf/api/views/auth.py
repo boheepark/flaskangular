@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from sqlalchemy import exc
+from sqlalchemy import exc, MetaData
 from asdf import bcrypt, db
 from asdf.api.models.user import User
 
@@ -25,7 +25,15 @@ def signup():
             "status": "fail",
             "message": "Empty payload."
         }), 400
-
+    meta = MetaData()
+    meta.reflect(bind=db)
+    for column in meta.tables["users"].columns.keys():
+        if not data[column]:
+            return jsonify({
+                "status": "fail",
+                "message": "Incomplete payload."
+            })
+        print(column)
     try:
         new_user = User(
             id = None,
