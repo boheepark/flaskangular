@@ -7,6 +7,7 @@ WORKDIR /usr/src/asdf
 # add requirements (to leverage Docker cache)
 ADD ./requirements.txt /usr/src/asdf/requirements.txt
 ADD ./package.json /usr/src/asdf/package.json
+ADD ./bower.json /usr/src/asdf/bower.json
 
 # install requirements
 RUN pip install -r requirements.txt
