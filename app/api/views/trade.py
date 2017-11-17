@@ -3,8 +3,8 @@ from sqlalchemy import exc
 
 from datetime import datetime
 
-from app.api.models.user import User
-from app.api.models.trade import Trade
+from ..models.user import User
+from ..models.trade import Trade
 from app import db
 
 trades_blueprint = Blueprint("trades", __name__)

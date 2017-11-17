@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from app.api.models.user import User
-from app.api.models.trade import Trade
+from ..models.user import User
+from ..models.trade import Trade
 from app import db
 
 
