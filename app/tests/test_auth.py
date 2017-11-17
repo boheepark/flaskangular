@@ -1,6 +1,6 @@
 import json
 
-from app.tests.base import BaseTestCase
+from base import BaseTestCase
 
 class TestAuthService(BaseTestCase):
 
