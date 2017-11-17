@@ -6,6 +6,7 @@ WORKDIR /usr/src/asdf
 
 # add requirements (to leverage Docker cache)
 ADD ./requirements.txt /usr/src/asdf/requirements.txt
+ADD ./instance/staging.py /usr/src/asdf/instance/staging.py
 
 # install requirements
 RUN pip install -r requirements.txt
@@ -36,8 +37,6 @@ ENV NODE_BIN /usr/local/bin/node
 ENV NPM_BIN /usr/local/bin/npm
 ENV JSPM_BIN /usr/local/bin/jspm
 
-# setup npm
-RUN npm install
 
 # run server
 CMD python manage.py runserver -h 0.0.0.0
