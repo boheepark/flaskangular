@@ -13,6 +13,7 @@ venv
 
 # yarn
 yarn*
+yarn.*
 
 # visual studio?
 .vs
