@@ -8,6 +8,8 @@ class BaseConfig:
     SECRET_KEY = "asdf"
     SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    BCRYPT_LOG_ROUNDS = 12
+    MAIL_FROM_EMAIL = "boheepark@yahoo.com"
 
 class DevelopmentConfig(BaseConfig):
     DEVELOPMENT = True
@@ -23,10 +25,3 @@ class StagingConfig(BaseConfig):
 
 class ProductionConfig(BaseConfig):
     DEBUG = False
-
-app_config = {
-    "development": DevelopmentConfig,
-    "testing": TestingConfig,
-    "staging": StagingConfig,
-    "production": ProductionConfig
-}
