@@ -1,17 +1,18 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-from flask_yarn import Yarn
+from flask_debugtoolbar import DebugToolbarExtension
 import os
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
+toolbar = DebugToolbarExtension()
 
 def create_app():
     app = Flask(__name__)
-    Yarn(app)
     app.config.from_object(os.getenv("APP_SETTINGS"))
     db.init_app(app)
+    toolbar.init_app(app)
     if app.config["DEBUG"]:
         from werkzeug import SharedDataMiddleware
         app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
