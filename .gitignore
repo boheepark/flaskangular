@@ -20,6 +20,9 @@ yarn.*
 *.vbproj
 obj
 
+# web assets
+.webassets-cache
+
 # pycharm
 .idea
 
