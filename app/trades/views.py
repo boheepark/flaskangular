@@ -1,15 +1,17 @@
-from flask import Blueprint, request, jsonify
-from sqlalchemy import exc
-
 from datetime import datetime
 
-from ..models.user import User
-from ..models.trade import Trade
+from flask import Blueprint, request, jsonify
+from flask_login import login_required
+from sqlalchemy import exc
+
 from app import db
+from ..auth.models import User
+from .models import Trade
 
-trades_blueprint = Blueprint("trades", __name__)
+trade_blueprint = Blueprint("trade", __name__, static_folder="static", template_folder="templates")
 
-@trades_blueprint.route("/api/trade/buy", methods = ["POST"])
+@trade_blueprint.route("/api/trade/buy", methods = ["POST"])
+@login_required
 def trading_buy():
     data = request.get_json()
     try:
