@@ -1,12 +1,12 @@
 FROM python:3.6.1
 
 # set working directory
-RUN mkdir -p /usr/src/asdf
-WORKDIR /usr/src/asdf
+RUN mkdir -p /usr/src/flaskangular
+WORKDIR /usr/src/flaskangular
 
 # add requirements (to leverage Docker cache)
-ADD ./requirements.txt /usr/src/asdf/requirements.txt
-ADD ./instance/staging.py /usr/src/asdf/instance/staging.py
+ADD ./requirements.txt /usr/src/flaskangular/requirements.txt
+ADD ./instance/staging.py /usr/src/flaskangular/instance/staging.py
 
 # install requirements
 RUN pip install -r requirements.txt
