@@ -24,7 +24,7 @@ obj
 .webassets-cache
 
 # phantomjs
-ghostdriver.log
+ghostdriver.*
 
 # pycharm
 .idea
