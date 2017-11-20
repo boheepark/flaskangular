@@ -3,7 +3,7 @@ from flask import Blueprint, request, jsonify
 from .models import User
 
 from ..trades.models import Trade
-users_blueprint = Blueprint("users", __name__, static_folder="static", template_folder="templates")
+users_blueprint = Blueprint("users", __name__, static_folder="static")
 
 @users_blueprint.route("/api/user", methods = ["POST"])
 def get_user_by_token():

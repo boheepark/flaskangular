@@ -1,3 +1,3 @@
-CREATE DATABASE asdf_prod;
-CREATE DATABASE asdf_dev;
-CREATE DATABASE asdf_test;
+CREATE DATABASE flaskangular_prod;
+CREATE DATABASE flaskangular_dev;
+CREATE DATABASE flaskangular_test;

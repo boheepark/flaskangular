@@ -7,7 +7,7 @@ from app import db
 from ..users.models import User
 from .models import Trade
 
-trades_blueprint = Blueprint("trades", __name__, static_folder="static", template_folder="templates")
+trades_blueprint = Blueprint("trades", __name__, static_folder="static")
 
 @trades_blueprint.route("/api/trades/buy", methods = ["POST"])
 def trading_buy():

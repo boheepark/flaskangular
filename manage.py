@@ -21,6 +21,15 @@ def test():
     return 1
 
 @manager.command
+def fun_test():
+    """Runs the tests without code coverage."""
+    tests = unittest.TestLoader().discover('app/fun_tests', pattern='test*.py')
+    result = unittest.TextTestRunner(verbosity=2).run(tests)
+    if result.wasSuccessful():
+        return 0
+    return 1
+
+@manager.command
 def recreate_db():
     db.drop_all()
     db.create_all()

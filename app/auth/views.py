@@ -4,7 +4,7 @@ from sqlalchemy import exc
 from app import bcrypt, db
 from ..users.models import User
 
-auth_blueprint = Blueprint("auth", __name__, static_folder="static", template_folder="templates")
+auth_blueprint = Blueprint("auth", __name__, static_folder="static")
 
 @auth_blueprint.route("/auth/signup", methods = ["POST"])
 def signup():

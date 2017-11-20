@@ -1,7 +1,7 @@
 import json
 
 from app import db
-from app.api.models.user import User
+from app.users.models import User
 from base import BaseTestCase
 
 
@@ -21,6 +21,7 @@ def add_user(uname, name, email, pw, checking, trading, gender, phone, addr, tow
         state = state,
         zip = zip,
         active = None,
+        email_confirmed = None,
         last_seen = None,
         updated_at = None,
         created_at = None
