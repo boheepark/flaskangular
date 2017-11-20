@@ -23,6 +23,9 @@ obj
 # web assets
 .webassets-cache
 
+# phantomjs
+ghostdriver.log
+
 # pycharm
 .idea
 
@@ -33,5 +36,3 @@ start.bat
 # alembic
 alembic.ini
 
-# phantomjs
-ghostdriver.log
