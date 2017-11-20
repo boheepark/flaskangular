@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   flaskangular-db:
-    container_name: asdf-db
+    container_name: flaskangular-db
     build: ./app/db
     ports:
       - 5435:5432 # expose ports - HOST:CONTAINER
