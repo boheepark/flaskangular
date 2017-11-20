@@ -19,7 +19,6 @@ sentry = Sentry(dsn="https://f2010cadf0ef406f8e108f3e396e83b5:55471c2c8cc043f1a3
 def create_app():
     app = Flask(__name__, instance_relative_config=True, static_folder="static")
     app.config.from_object("config.default")
-    app.config.from_pyfile("config.py")
     app.config.from_envvar("APP_CONFIG_FILE")
     cache.init_app(app)
     db.init_app(app)
