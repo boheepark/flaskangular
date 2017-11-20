@@ -1,6 +1,6 @@
 version: '2.1'
 services:
-  asdf-db:
+  flaskangular-db:
     container_name: asdf-db
     build: ./app/db
     ports:
@@ -10,19 +10,19 @@ services:
       - POSTGRES_PASSWORD=postgres
     healthcheck:
       test: exit 0
-  asdf-service:
-    container_name: asdf-service
+  flaskangular-service:
+    container_name: flaskangular-service
     build: ./
     volumes:
-      - '.:/usr/src/asdf'
+      - '.:/usr/src/flaskangular'
     ports:
       - 5001:5000 # expose ports - HOST:CONTAINER
     environment:
       - APP_CONFIG_FILE=config/staging.py
-      - DATABASE_URL=postgres://postgres:postgres@asdf-db:5432/asdf_dev
-      - DATABASE_TEST_URL=postgres://postgres:postgres@asdf-db:5432/asdf_test
+      - DATABASE_URL=postgres://postgres:postgres@localhost:5432/flaskangular_dev
+      - DATABASE_TEST_URL=postgres://postgres:postgres@localhost:5432/flaskangular_test
     depends_on:
-      asdf-db:
+      flaskangular-db:
         condition: service_healthy
     links:
-      - "asdf-db"
+      - "flaskangular-db"
