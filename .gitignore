@@ -29,3 +29,6 @@ obj
 instance/
 
 start.bat
+
+# alembic
+alembic.ini

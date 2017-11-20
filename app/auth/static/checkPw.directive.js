@@ -10,10 +10,10 @@ angular.module("app.auth").directive("checkPw", ["$timeout", function($timeout){
             if(modelValue.includes(c)) bool = true;
           }
           return bool;
-        }
+        };
         if(!has("abcdefghijklmnopqrstuvwxyz") || !has("ABCDEFGHIJKLMNOPQRSTUVWXYZ") || !has("123456789") || !has("~!@#$%^&*()_+-=/?<>:;{}[]|")) return false;
         return true;
       };
     }
-  }
+  };
 }]);

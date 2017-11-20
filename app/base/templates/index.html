@@ -1,10 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+<!doctype html>
+<html>
+    <head>
+      <title>Asdf</title>
+      {% assets "modules_js" %}
+        <script src="{{ ASSET_URL }}"></script>
+      {% endassets %}
+      {% assets "modules_css" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}"/>
+      {% endassets %}
+      <!--{% assets "app_js" %}-->
+        <!--<script src="{{ ASSET_URL }}"></script>-->
+      <!--{% endassets %}-->
+      {% assets "app_css" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}"/>
+      {% endassets %}
+      {% assets "home_js" %}
+        <script src="{{ ASSET_URL }}"></script>
+      {% endassets %}
+      {% assets "auth_js" %}
+        <script src="{{ ASSET_URL }}"></script>
+      {% endassets %}
+      {% assets "users_js" %}
+        <script src="{{ ASSET_URL }}"></script>
+      {% endassets %}
+      {% assets "trades_js" %}
+        <script src="{{ ASSET_URL }}"></script>
+      {% endassets %}
+      {% assets "base_js" %}
+        <script src="{{ ASSET_URL }}"></script>
+      {% endassets %}
+      <!--<script src="node_modules/angular/angular.min.js"></script>-->
+      <!--<script src="node_modules/angular-route/angular-route.min.js"></script>-->
+      <!--<script src="node_modules/angular-messages/angular-messages.min.js"></script>-->
+      <!--<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>-->
+      <!--<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">-->
+      <!--<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">-->
+      <!--<script src="app.js"></script>-->
+      <!--<script src="auth/auth.controller.js"></script>-->
+      <!--<script src="asdf/logo.directive.js"></script>-->
+      <!--<script src="auth/bgEffect.component.js"></script>-->
+      <!--<script src="auth/checkDb.directive.js"></script>-->
+      <!--<script src="auth/compareTo.directive.js"></script>-->
+      <!--<script src="auth/checkPw.directive.js"></script>-->
+      <!--<script src="auth/authBtn.directive.js"></script>-->
+      <!--<script src="info/home.controller.js"></script>-->
+      <!--<script src="info/trades.directive.js"></script>-->
+      <!--<script src="services/auth.factory.js"></script>-->
+      <!--<script src="services/users.factory.js"></script>-->
+      <!--<script src="services/trades.factory.js"></script>-->
+      <!--<link rel="stylesheet" href="styles/css/styles.css" />-->
+      <!--<link rel="stylesheet" href="styles/css/asdf.css" />-->
+      <!--<link rel="stylesheet" href="styles/css/auth.css" />-->
+      <!--<link rel="stylesheet" href="styles/css/info.css" />-->
+    </head>
+    <body ng-app="app">
+      <div ng-view></div>
+    </body>
 </html>

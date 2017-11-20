@@ -1,4 +1,4 @@
-angular.module('app.info', []).controller('InfoController', function ($scope, $rootScope, $window, $location, Auth, User, Trade) {
+angular.module('app.home', []).controller('HomeController', function ($scope, $rootScope, $window, $location, Auth, User, Trade) {
   $scope.signout = function(){
     Auth.signout();
   };

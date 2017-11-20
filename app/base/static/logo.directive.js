@@ -1,8 +1,8 @@
 angular.module("app").directive("asdfLogo", ["$timeout", function($timeout){
   return {
-    templateUrl: "/static/asdf/asdfLogo.html",
+    templateUrl: "templates/base/logo.html",
     link: function($scope, $element, $attrs){
 
     }
-  }
+  };
 }]);

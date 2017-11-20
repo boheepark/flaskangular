@@ -5,7 +5,6 @@ from flask_assets import Environment
 from flask_bcrypt import Bcrypt
 from flask_cache import Cache
 from flask_debugtoolbar import DebugToolbarExtension
-from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from raven.contrib.flask import Sentry
 
@@ -15,7 +14,6 @@ cache = Cache(config={"CACHE_TYPE": "simple"})
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 toolbar = DebugToolbarExtension()
-login_manager = LoginManager()
 sentry = Sentry(dsn="https://f2010cadf0ef406f8e108f3e396e83b5:55471c2c8cc043f1a3d066f1a72f83de@sentry.io/246585")
 
 def create_app():
@@ -26,7 +24,6 @@ def create_app():
     cache.init_app(app)
     db.init_app(app)
     toolbar.init_app(app)
-    login_manager.init_app(app)
     sentry.init_app(app)
     if app.config["DEBUG"]:
         from werkzeug import SharedDataMiddleware

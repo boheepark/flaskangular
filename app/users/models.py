@@ -20,12 +20,13 @@ class User(db.Model):
     town = db.Column(db.String(), nullable=False)
     state = db.Column(db.String(2), nullable=False)
     zip = db.Column(db.String(5), nullable=False)
-    active = db.Column(db.Boolean(), default=False, nullable=False) #NOTE implement this
-    last_seen = db.Column(db.TIMESTAMP, default=datetime.now(), nullable=False) #NOTE implement this
+    active = db.Column(db.Boolean(), default=False, nullable=False) #TODO implement this
+    email_confirmed = db.Column(db.Boolean(), default=False, nullable=False) #TODO implement this
+    last_seen = db.Column(db.TIMESTAMP, default=datetime.now(), nullable=False) #TODO implement this
     updated_at = db.Column(db.TIMESTAMP, default=datetime.now(), onupdate=datetime.now(), nullable=False)
     created_at = db.Column(db.TIMESTAMP, default=datetime.now(), nullable=False)
 
-    def __init__(self, id, uname, name, email, pw, checking, trading, gender, phone, addr, town, state, zip, active, last_seen, updated_at, created_at):
+    def __init__(self, id, uname, name, email, pw, checking, trading, gender, phone, addr, town, state, zip, active, email_confirmed, last_seen, updated_at, created_at):
         self.id = id
         self.uname = uname
         self.name = name
@@ -40,6 +41,7 @@ class User(db.Model):
         self.state = state
         self.zip = zip
         self.active = active
+        self.email_confirmed = email_confirmed
         self.last_seen = last_seen
         self.updated_at = updated_at
         self.created_at = created_at
@@ -60,6 +62,7 @@ class User(db.Model):
             "state": self.state,
             "zip": self.zip,
             "active": self.active,
+            "email_confirmed": self.email_confirmed,
             "last_seen": self.last_seen,
             "updated_at": self.updated_at,
             "created_at": self.created_at
@@ -87,7 +90,6 @@ class User(db.Model):
     def decode_auth_token(token):
         try:
             payload = jwt.decode(token, current_app.config["SECRET_KEY"])
-            # payload = jwt.decode(token, "asdf")
             return payload["sub"]
         except jwt.ExpiredSignatureError:
             return "Signature expired. Please log in again."

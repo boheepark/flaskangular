@@ -1,3 +1,3 @@
 angular.module("app.auth").component("bgEffect", {
-  templateUrl: "static/auth/bgEffect.html"
+  templateUrl: "templates/auth/bgEffect.html"
 });

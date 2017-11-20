@@ -1,6 +1,6 @@
 angular.module("app.auth").directive("authBtn", ["$timeout", function($timeout){
   return {
-    templateUrl: "static/auth/authBtn.html",
+    templateUrl: "templates/auth/authBtn.html",
     link: function($scope, $element, $attrs){
       $scope.btn_text = $attrs.text;
       $scope.authorize = function(user){

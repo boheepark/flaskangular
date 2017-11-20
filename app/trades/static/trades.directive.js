@@ -1,6 +1,6 @@
-angular.module('app.info').directive("trades", ["$timeout", "Trade", function($timeout, Trade){
+angular.module('app.home').directive("trades", ["$timeout", "Trade", function($timeout, Trade){
   return {
-    templateUrl: "static/info/trades.html",
+    templateUrl: "templates/trades/trades.html",
     link: function($scope, $element, $attrs, ngModel){
       $scope.buy = function(){
         if(!$scope.stock.company || !$scope.stock.price || !$scope.stock.quantity){
