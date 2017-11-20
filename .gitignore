@@ -32,3 +32,6 @@ start.bat
 
 # alembic
 alembic.ini
+
+# phantomjs
+ghostdriver.log
