@@ -50,6 +50,7 @@ def signup():
             state = state,
             zip = zip,
             active = True,
+            email_confirmed = False,
             last_seen = None,
             updated_at = None,
             created_at = None
