@@ -33,7 +33,7 @@ Flask-Testing==0.6.2
 gunicorn==19.7.1
 idna==2.6
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.11.3
 jmespath==0.9.3
 jsmin==2.2.2
 jsonschema==2.6.0
